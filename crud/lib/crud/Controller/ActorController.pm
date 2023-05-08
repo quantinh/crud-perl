@@ -3,37 +3,13 @@ use Mojo::Base 'Mojolicious::Controller', -signatures;
 use strict;
 use warnings;
 use DBI;
-# use config 'config';
-# use config::database;
-use config;
+do '../../../config/database.pl';
 
 
-
-# # Action connect to database postgres
-# sub connect_db {
-#   # all param function connect database
-#   my ($dbname, $host, $port, $username, $password) = @_;
-#   my $dsn = "dbi:Pg:dbname = $dbname; host = $host; port = $port";
-#   my $dbh = DBI->connect($dsn, $username, $password, { RaiseError => 1, AutoCommit => 0 }) or die "Cannot connect to database: $DBI::errstr";
-#   return $dbh;
-# }
-
-# Action welcome render in template
-sub welcome ($self) {
-
-  # Hiển thị ra thư mục template "example/welcome.html.ep" với message
-  # $self->render(msg => 'Welcome to the Mojolicious real-time web framework!');
-
-  # Hiển thị ra thư mục template "example/welcome.html.ep" với message
-  $self->render(
-      template => 'myTemplates/home',
-      msg      => 'Welcome to My personal website !'
-  );
-}
 # Action showData
 sub show($self) {
   # use function connect database
-  my $dbh = config::connect_db('learning-perl', 'localhost', '5432', 'postgres', '123456');
+  my $dbh = connect_db('learning-perl', 'localhost', '5432', 'postgres', '123456');
   # string query to database
   my $sth = $dbh->prepare( 
     qq(
@@ -71,7 +47,7 @@ sub fromAdd($self) {
 # Action Add
 sub add($self) {
   # use function connect database
-  my $dbh = config::connect_db('learning-perl', 'localhost', '5432', 'postgres', '123456');
+  my $dbh = connect_db('learning-perl', 'localhost', '5432', 'postgres', '123456');
   my $first_name = $self->param('first_name');
   my $last_name = $self->param('last_name');
   my $last_update = $self->param('last_update');
@@ -98,7 +74,7 @@ sub add($self) {
 # Action formDelete
 sub delete($self) {
   # use function connect database
-  my $dbh = config::connect_db('learning-perl', 'localhost', '5432', 'postgres', '123456');
+  my $dbh = connect_db('learning-perl', 'localhost', '5432', 'postgres', '123456');
   my $id = $self->stash('id');
   my $sth = $dbh->prepare(
     qq(
@@ -114,7 +90,7 @@ sub delete($self) {
 # Action formEdit
 sub formUpdate($self) {
   # use function connect database
-  my $dbh = config::connect_db('learning-perl', 'localhost', '5432', 'postgres', '123456');
+  my $dbh = connect_db('learning-perl', 'localhost', '5432', 'postgres', '123456');
   my $id = $self->stash('id');
   # string query to database
   my $sth = $dbh->prepare(
@@ -138,7 +114,7 @@ sub formUpdate($self) {
 # Action formEdit
 sub update ($self) {
   # use function connect database
-  my $dbh = config::connect_db('learning-perl', 'localhost', '5432', 'postgres', '123456');
+  my $dbh = connect_db('learning-perl', 'localhost', '5432', 'postgres', '123456');
   my $id = $self->stash('id');
   my $first_name = $self->param('first_name');
   my $last_name = $self->param('last_name');
