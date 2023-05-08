@@ -1,0 +1,10 @@
+---
+secrets:
+  - 4a08bd5204cd929fb428ddba7b2a66e9a801ce69
+
+plugins:
+  - Database:
+      dsn: dbi:Pg:dbname=learning-perl;host=localhost;port=5432
+      username: postgres
+      password: 1234567
+

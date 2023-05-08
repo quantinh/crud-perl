@@ -1,0 +1,35 @@
+% layout 'data';
+% title 'Data page';
+<h1 class="text-success heading-success">CRUD</h1>
+<table id="myTable" class="customers display">
+  <tr>
+    <th>actor_id</th>
+    <th>first_name</th>
+    <th>last_name</th>
+    <th>last_update</th>
+    <th>actions</th>
+  </tr>
+  <% foreach my $row (@$rows) { %>
+    <tr>
+      <td><%= $row->{'actor_id'} %></td>
+      <td><%= $row->{'first_name'} %></td>
+      <td><%= $row->{'last_name'} %></td>
+      <td><%= $row->{'last_update'} %></td>
+      <td class="action">
+        <a href= "/form-add" class="mr-2 btn btn-primary">
+          Add
+        </a>
+        <a href= "/form-update/<%= $row->{'actor_id'} %>" class="mr-2 btn btn-info">
+          Edit
+        </a>
+        <a href= "/delete/<%= $row->{'actor_id'} %>" class="mr-2 btn btn-danger">
+          Delete
+        </a>
+      </td>
+    </tr>
+  <% } %>
+</table>
+
+
+
+

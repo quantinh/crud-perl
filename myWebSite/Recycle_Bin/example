@@ -1,0 +1,32 @@
+-> default.html.ep
+<!DOCTYPE html>
+<html>
+  <head><title><%= title %></title></head>
+  <body><%= content %></body>
+</html>
+
+
+database customer take 6 fields
+customer_id
+customer.store_id -> table store.store_id take store_id field
+first_name
+last_name
+email
+customer.address_id -> table address.address_id take address field 
+activebool
+create_date
+last_update
+active
+
+address_id, 
+address, 
+address2, 
+district, 
+city_id,
+postal_code, 
+phone, 
+last_update
+
+insert into public.customer(store_id, first_name, last_name, email, address_id, activebool, create_date, last_update, active)
+values (1, 'phuc', 'nguyen', 'phuc22821@gmail.com', 5, 'true',CURRENT_DATE, CURRENT_DATE, 1);
+

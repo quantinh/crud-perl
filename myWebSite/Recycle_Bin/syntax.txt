@@ -1,0 +1,4 @@
+mojo generate controller Example
+
+nếu lỗi Mojo::File:
+cpanm --force Mojo::File

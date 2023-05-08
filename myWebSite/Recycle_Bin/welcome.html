@@ -1,0 +1,53 @@
+% layout 'default'; 
+% title 'Welcome';
+<h2><%= $msg %></h2>
+<p>
+  This page was generated from the template "templates/example/welcome.html.ep"
+  and the layout "templates/layouts/default.html.ep", <%= link_to 'click here'=> url_for %> to reload the page or <%= link_to 'here' => '/index.html' %> to
+  move forward to a static page.
+</p>
+<button type="button" class="btn btn-success">Create</button>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Customer_id</th>
+      <th scope="col">Store_id</th>
+      <th scope="col">First_name</th>
+      <th scope="col">Last_name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Address</th>
+      <th scope="col">Activebool</th>
+      <th scope="col">Create_date</th>
+      <th scope="col">Last_update</th>
+      <th scope="col">Active</th>
+    </tr>
+  </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>1</td>
+        <td>Nguyen</td>
+        <td>Phuc</td>
+        <td>phuc22821@gmail.com</td>
+        <td>DakLak</td>
+        <td>True</td>
+        <td>2022-02-14</td>
+        <td>2022-02-15 16:57:20+07</td>
+        <td>1</td>
+      </tr>
+      <% for my $customer (@$customers) { %>
+        <tr>
+          <td scope="row"><%= $customer->{customer_id} %></td>
+          <td><%= $customer->{store_id} %></td>
+          <td><%= $customer->{first_name} %></td>
+          <td><%= $customer->{last_name} %></td>
+          <td><%= $customer->{email} %></td>
+          <td><%= $customer->{address_id} %></td>
+          <td><%= $customer->{activebool} %></td>
+          <td><%= $customer->{create_date} %></td>
+          <td><%= $customer->{last_update} %></td>
+          <td><%= $customer->{active} %></td>
+        </tr>
+      <% } %>
+    </tbody>
+</table>
